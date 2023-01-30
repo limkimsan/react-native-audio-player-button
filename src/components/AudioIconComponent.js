@@ -3,6 +3,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import color from '../constants/color_constant';
+import {iconSize} from '../constants/component_constant';
 
 const iconSet = {
   'ion_icon': {
@@ -26,8 +27,8 @@ const AudioIconComponent = (props) => {
     return props.isPlaying ? icon.pause : icon.play;
   }
 
-  const primaryColor = props.primaryColor || color.black
-  const secondaryColor = props.secondaryColor || color.gray
+  const primaryColor = props.iconPrimaryColor || color.black
+  const secondaryColor = props.iconSecondaryColor || color.gray
   const getIconColor = () => {
     return props.isPlaying ? secondaryColor : primaryColor;
   }
@@ -40,7 +41,7 @@ const AudioIconComponent = (props) => {
   return (
     React.cloneElement(renderIcon(), {
       name: getIcon(),
-      size: props.iconSize, color: !!props.audio ? getIconColor() : color.muted,
+      size: props.iconSize || iconSize, color: !!props.audio ? getIconColor() : color.muted,
       style: [props.iconStyle, { marginLeft: (props.isPlaying  && !props.isSpeakerIcon) ? -2 : 0 }]
     })
   )

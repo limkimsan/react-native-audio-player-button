@@ -1,38 +1,37 @@
 import React from 'react'
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native'
+import {TouchableOpacity} from 'react-native'
 
 import AudioIconComponent from './AudioIconComponent';
 import {mdPressableItemSize, lgPressabelItemSize} from '../constants/component_constant'
 import {isLowPixelDensityDevice} from '../utils/responsive_util'
+import color from '../constants/color_constant';
+
+const btnSize = isLowPixelDensityDevice() ? mdPressableItemSize : lgPressabelItemSize
 
 const AudioPlayerButtonComponent = (props) => {
+  const btnStyle = {
+    alignItems: 'center',
+    backgroundColor: props.backgroundColor || color.white,
+    borderRadius: 40,
+    elevation: props.hasShadow ? 4 : 0,
+    justifyContent: 'center',
+    height: props.height || btnSize,
+    width: props.width || btnSize,
+  }
+
   return (
-    <TouchableOpacity style={styles.btn}>
-      <Text>Point</Text>
+    <TouchableOpacity style={[btnStyle, props.btnStyle]}>
       <AudioIconComponent
         isPlaying={false}
-        audio={null}
-        isSpeakerIcon={true}
+        audio={props.audio}
+        isSpeakerIcon={props.isSpeakerIcon}
         iconStyle={{}}
-        iconSize={24}
-        primaryColor={props.primaryColor}
-        secondaryColor={props.secondaryColor}
+        iconSize={props.iconSize}
+        iconPrimaryColor={props.iconPrimaryColor}
+        iconSecondaryColor={props.iconSecondaryColor}
       />
     </TouchableOpacity>
   )
 }
-
-const btnSize = isLowPixelDensityDevice() ? mdPressableItemSize : lgPressabelItemSize
-const styles = StyleSheet.create({
-  btn: {
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 40,
-    justifyContent: 'center',
-    height: btnSize,
-    width: btnSize,
-  }
-})
 
 export default AudioPlayerButtonComponent

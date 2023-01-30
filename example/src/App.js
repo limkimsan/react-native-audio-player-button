@@ -8,10 +8,16 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 export default function App() {
   return (
     <View style={styles.container}>
-
       <FeatherIcon name="search" size={20} color='black' style={{marginTop: 20, display: 'none'}} />
       <IonIcon name="search" size={20} color='black' style={{marginTop: 20, display: 'none'}} />
-      <AudioPlayerButton/>
+      <AudioPlayerButton
+        audio={'audio'}
+        hasShadow={true}
+        iconSize={30}
+        iconPrimaryColor="red"
+        iconSecondaryColor='blue'
+        isSpeakerIcon={true}
+      />
     </View>
   );
 }
