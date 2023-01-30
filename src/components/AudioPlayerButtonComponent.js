@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
+import AudioIconComponent from './AudioIconComponent';
 import {mdPressableItemSize, lgPressabelItemSize} from '../constants/component_constant'
 import {isLowPixelDensityDevice} from '../utils/responsive_util'
 
@@ -8,6 +9,15 @@ const AudioPlayerButtonComponent = (props) => {
   return (
     <TouchableOpacity style={styles.btn}>
       <Text>Point</Text>
+      <AudioIconComponent
+        isPlaying={false}
+        audio={null}
+        isSpeakerIcon={true}
+        iconStyle={{}}
+        iconSize={24}
+        primaryColor={props.primaryColor}
+        secondaryColor={props.secondaryColor}
+      />
     </TouchableOpacity>
   )
 }
