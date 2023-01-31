@@ -20,7 +20,10 @@ const iconSet = {
 
 const AudioIconComponent = (props) => {
   const getIcon = () => {
-    const icon = props.isSpeakerIcon ? iconSet['ion_icon'] : iconSet['feather'];
+    // const icon = props.isSpeakerIcon ? iconSet['ion_icon'] : iconSet['feather'];
+
+    const icon = props.customIconSet ? props.customIconSet : props.isSpeakerIcon ? iconSet['ion_icon'] : iconSet['feather'];
+
     if (!props.audio)
       return icon.mute;
 
@@ -34,6 +37,8 @@ const AudioIconComponent = (props) => {
   }
 
   const renderIcon = () => {
+    if (props.customIcon) return props.customIcon
+
     return props.isSpeakerIcon ? <IonIcon/> : <FeatherIcon/>
   }
 

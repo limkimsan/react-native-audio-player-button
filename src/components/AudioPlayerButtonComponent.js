@@ -116,6 +116,8 @@ const AudioPlayerButtonComponent = (props) => {
               iconSize={props.iconSize}
               iconPrimaryColor={props.iconPrimaryColor}
               iconSecondaryColor={props.iconSecondaryColor}
+              customIcon={props.customIcon}
+              customIconSet={props.customIconSet}
             />
           </TouchableOpacity>
   }
