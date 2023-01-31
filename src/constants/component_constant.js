@@ -1,3 +1,5 @@
-export const mdPressableItemSize = 48
-export const lgPressabelItemSize = 56
-export const iconSize = 24
+import {isLowPixelDensityDevice} from '../utils/responsive_util'
+
+export const defaultBtnSize = isLowPixelDensityDevice() ? 48 : 56
+export const defaultRippleSize = isLowPixelDensityDevice() ? 48 : 56
+export const iconSize = isLowPixelDensityDevice() ? 24 : 26

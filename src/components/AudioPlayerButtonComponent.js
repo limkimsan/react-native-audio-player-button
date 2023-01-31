@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, View} from 'react-native'
 
 import AudioIconComponent from './AudioIconComponent';
-import {mdPressableItemSize, lgPressabelItemSize} from '../constants/component_constant'
-import {isLowPixelDensityDevice} from '../utils/responsive_util'
+import RippleAnimationComponent from './RippleAnimationComponent';
+import {defaultBtnSize} from '../constants/component_constant'
 import color from '../constants/color_constant';
 import audioPlayerService from '../services/audio_player_service';
-
-const btnSize = isLowPixelDensityDevice() ? mdPressableItemSize : lgPressabelItemSize
 
 const AudioPlayerButtonComponent = (props) => {
   const localAudioPlayer = useRef(null);
@@ -42,7 +40,6 @@ const AudioPlayerButtonComponent = (props) => {
       countInterval: null
     })
     setIsPlaying(false)
-    // !!props.toggleIsPlaying && props.toggleIsPlaying(false)
   }
 
   const updateState = (playSeconds, duration, countInterval) => {
@@ -75,7 +72,6 @@ const AudioPlayerButtonComponent = (props) => {
   const handleStopPlaying = (countInterval, playSeconds, duration) => {
     if (!countInterval) {
       setIsPlaying(false);
-      // !!props.toggleIsPlaying && props.toggleIsPlaying(false);
 
       if (playSeconds == 0 && duration == 0)
         props.updatePlayingUuid(null);
@@ -84,33 +80,51 @@ const AudioPlayerButtonComponent = (props) => {
 
   const onPress = () => {
     props.updatePlayingUuid(props.itemUuid);
-    // !!props.toggleIsPlaying && props.toggleIsPlaying(!isPlaying);
     setIsPlaying(!isPlaying);
     toggleAudio();
   }
 
-  const btnStyle = {
-    alignItems: 'center',
-    backgroundColor: props.backgroundColor || color.white,
-    borderRadius: 40,
-    elevation: props.hasShadow ? 4 : 0,
-    justifyContent: 'center',
-    height: props.height || btnSize,
-    width: props.width || btnSize,
+  const renderRippleAnimation = () => {
+    return <RippleAnimationComponent
+              rippleColor={props.rippleColor}
+              height={props.rippleHeight}
+              width={props.rippleWidth}
+              radius={props.rippleRadius}
+              isPlaying={isPlaying}
+              rippleStyle={props.rippleStyle}
+           />
+  }
+
+  const renderBtn = () => {
+    const btnStyles = {
+      alignItems: 'center',
+      backgroundColor: props.buttonColor || color.white,
+      borderRadius: 48,
+      elevation: props.hasShadow ? 4 : 0,
+      justifyContent: 'center',
+      height: props.height || defaultBtnSize,
+      width: props.width || defaultBtnSize,
+      zIndex: 10
+    }
+
+    return <TouchableOpacity onPress={() => onPress()} style={[btnStyles, props.btnStyle]}>
+            <AudioIconComponent
+              isPlaying={isPlaying}
+              audio={props.audio}
+              isSpeakerIcon={props.isSpeakerIcon}
+              iconStyle={{}}
+              iconSize={props.iconSize}
+              iconPrimaryColor={props.iconPrimaryColor}
+              iconSecondaryColor={props.iconSecondaryColor}
+            />
+          </TouchableOpacity>
   }
 
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[btnStyle, props.btnStyle]}>
-      <AudioIconComponent
-        isPlaying={isPlaying}
-        audio={props.audio}
-        isSpeakerIcon={props.isSpeakerIcon}
-        iconStyle={{}}
-        iconSize={props.iconSize}
-        iconPrimaryColor={props.iconPrimaryColor}
-        iconSecondaryColor={props.iconSecondaryColor}
-      />
-    </TouchableOpacity>
+    <View style={[{justifyContent: 'center', alignItems: 'center'}, props.containerStyle]}>
+      { props.rippled && renderRippleAnimation() }
+      { renderBtn() }
+    </View>
   )
 }
 
@@ -123,11 +137,19 @@ export default AudioPlayerButtonComponent
   itemUuid={string}
   playingUuid={string}
   isSpeakerIcon={boolean}
+  buttonColor={}
+  rippled={boolean}
+  rippleColor={}
+  rippleHeight={number}
+  rippleWidth={number}
+  rippleRadius={number}
+  rippleStyle={{}}
   iconStyle={{}}
   iconSize={number}
   iconPrimaryColor={}
   iconSecondaryColor={}
   btnStyle={{}}
   updatePlayingUuid={(playingUuid) => {}}
+  containerStyle={{}}
 />
 */}
