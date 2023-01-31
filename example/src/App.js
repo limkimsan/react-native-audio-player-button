@@ -6,17 +6,22 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 export default function App() {
+  const [playingUuid, setPlayingUuid] = React.useState(null);
+  
   return (
     <View style={styles.container}>
       <FeatherIcon name="search" size={20} color='black' style={{marginTop: 20, display: 'none'}} />
       <IonIcon name="search" size={20} color='black' style={{marginTop: 20, display: 'none'}} />
       <AudioPlayerButton
-        audio={'audio'}
+        audio={require('../assets/audios/hc_1_kh.mp3')}
+        itemUuid='abcdef'
         hasShadow={true}
         iconSize={30}
         iconPrimaryColor="red"
         iconSecondaryColor='blue'
         isSpeakerIcon={true}
+        playingUuid={playingUuid}
+        updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
       />
     </View>
   );
