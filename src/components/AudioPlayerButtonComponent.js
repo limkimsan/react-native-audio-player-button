@@ -112,7 +112,7 @@ const AudioPlayerButtonComponent = (props) => {
               isPlaying={isPlaying}
               audio={props.audio}
               isSpeakerIcon={props.isSpeakerIcon}
-              iconStyle={{}}
+              iconStyle={props.iconStyle}
               iconSize={props.iconSize}
               iconPrimaryColor={props.iconPrimaryColor}
               iconSecondaryColor={props.iconSecondaryColor}
