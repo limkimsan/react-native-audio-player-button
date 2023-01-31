@@ -159,7 +159,6 @@
     ]
   },
   "dependencies": {
-    "expo": "~47.0.12",
-    "react-native-vector-icons": "^9.2.0"
+    "expo": "~47.0.12"
   }
 }
