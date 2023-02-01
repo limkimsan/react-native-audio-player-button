@@ -78,8 +78,8 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-vector-icons": ">=9.2.0",
-    "react-native-sound": "^0.11.2"
+    "react-native-sound": "^0.11.2",
+    "react-native-vector-icons": ">=9.2.0"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -157,8 +157,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "expo": "~47.0.12"
   }
 }
