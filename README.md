@@ -1,4 +1,5 @@
 # react-native-audio-player-button
+<span><img src="https://user-images.githubusercontent.com/18114944/215944532-c1ce1e50-9744-4f75-899e-a801d4a2b080.png" width="250" height="500" /></span>
 
 React Native Audio Player Button is a custom button with an icon for playing the audio and it is able to prevent playing the audio overlap each other.
 
