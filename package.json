@@ -40,10 +40,7 @@
     "ios",
     "android"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/limkimsan/react-native-audio-player-button.git"
-  },
+  "repository": "https://github.com/limkimsan/react-native-audio-player-button",
   "author": "Kimsanlim <kimsanlim27@gmail.com> (https://github.com/limkimsan)",
   "license": "MIT",
   "bugs": {
