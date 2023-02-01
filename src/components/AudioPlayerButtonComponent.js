@@ -107,7 +107,7 @@ const AudioPlayerButtonComponent = (props) => {
       zIndex: 10
     }
 
-    return <TouchableOpacity onPress={() => onPress()} style={[btnStyles, props.buttonStyle]}>
+    return <TouchableOpacity onPress={() => onPress()} disabled={!props.audio} style={[btnStyles, props.buttonStyle]}>
             <AudioIconComponent
               isPlaying={isPlaying}
               audio={props.audio}
