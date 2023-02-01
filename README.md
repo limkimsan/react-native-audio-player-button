@@ -1,6 +1,9 @@
 # react-native-audio-player-button
 
-A button for playing the audio
+React Native Audio Player Button is a custom button with an icon for playing the audio and it is able to prevent playing the audio overlap each other.
+
+## Support
+iOS & Android
 
 ## Installation
 
@@ -8,23 +11,91 @@ A button for playing the audio
 npm install react-native-audio-player-button
 ```
 
+## Installing dependencies
+
+```sh
+npm install react-native-vector-icons react-native-sound
+```
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+- [react-native-sound](https://github.com/zmxv/react-native-sound)
+
 ## Usage
 
 ```js
-import { multiply } from 'react-native-audio-player-button';
+import AudioPlayerButton from 'react-native-audio-player-button';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 
-// ...
+//...
+const [playingUuid, setPlayingUuid] = React.useState(null);
 
-const result = await multiply(3, 7);
+<AudioPlayerServcie
+  audio={require('./assets/audios/sample.mp3')}
+  itemUuid='abcdefg'
+  isSpeakerIcon={true}
+  rippled={true}
+  iconPrimaryColor='#0088ff'
+  iconSecondaryColor='#5da297'
+  playingUuid={playingUuid}
+  updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+  containerStyle={{marginTop: 16}}
+  customIcon={<FAIcon/>}
+  customIconSet={{play: 'play-circle', pause: 'pause-circle', mute: 'repeat'}}
+/>
 ```
+## Properties
+#### Basic
+| Prop               |    Default    |    Type    |  Optional  | Description                                                                                  |
+| :----------------- | :-----------: | :--------: | :--------: | :------------------------------------------------------------------------------------------- |
+| audio              |      null     |   `.mp3`   |   `false`  | The audio file that will be playing                                                          |
+| itemUuid           |      null     |  `string`  |   `false`  | A unique uuid of the audio or the uuid of the button (to prevent playing audio overlap)      |
+| playingUuid        |      null     |  `string`  |   `false`  | The uuid of the audio that is currently playing                                              |
+| isSpeakerIcon      |     false     |  `boolean` |   `true`   | If true, it will show a speaker icon. If false, it will show a normal play icon              |
+| buttonColor        |   '#ffffff'   |  `string`  |   `true`   | The color of the button                                                                      |
+| buttonHeight       |    48 or 56   |  `number`  |   `true`   | Height of the button                                                                         |
+| buttonWidth        |    48 or 56   |  `number`  |   `true`   | Width of the button                                                                          |
+| rippled            |     false     |  `boolean` |   `true`   | If true, it will show a ripple animation while playing the audio                             |
+| rippleColor        |   '#000000'   |  `string`  |   `true`   | Color of the ripple animation                                                                |
+| rippleHeight       |    48 or 56   |  `number`  |   `true`   | The height of the ripple animation                                                           |
+| rippleWidth        |    48 or 56   |  `number`  |   `true`   | The width of the ripple animation                                                            |
+| rippleRadius       |    48 or 56   |  `number`  |   `true`   | The radius of the ripple animation                                                           |
+| iconSize           |    24 or 26   |  `number`  |   `true`   | The size of the icons (play and pause icon)                                                  |
+| iconPrimaryColor   |   '#000000'   |  `string`  |   `true`   | The color of the icon before playing the audio                                               |
+| iconSecondaryColor |   '#808080'   |  `string`  |   `true`   | The color of the icon while playing the audio                                                |
+| playingUuid        |      ''       |  `string`  |   `false`  | The uuid of the playing auido component (to prevent playing audio overlap each other)        |
+
+- The default width, height of the button and ripple animation will be `56dp` and `48dp` for the low pixel devices
+
+#### Custom styles
+
+| Prop                  |    Default    |   Type    |  Optional  | Description                                                                |
+| :-------------------- | :-----------: | :-------: | :--------: | :------------------------------------------------------------------------- |
+| containerStyle        |     {...}     |  `style`  |   `true`   | Style of the button and ripple animation container                         |
+| butonStyle            |     {...}     |  `style`  |   `true`   | Style of the button                                                        |
+| iconStyle             |     {...}     |  `style`  |   `true`   | Style of the audio icons (play and pause icon)                             |
+| rippleStyle           |     {...}     |  `style`  |   `true`   | Style of the ripple animation                                              |
+
+#### Custom components
+| Prop              |               Default             |  Type  |  Optional  | Description                                          |
+| :---------------- | :-------------------------------: | :----: | :--------: | :--------------------------------------------------- |
+| customIcon        |                {...}              | `comp` |   `true`   | Custom audio icon component                          |
+| customIconSet     | {{play: '', pause: '', mute: ''}} | `hash` |   `true`   | A hash of the custom icon names                      |
+
+- `play`: The icon that will be shown when the audio is not playing
+- `pause`: The icon that will be shown while the audio is playing
+- `mute`: The icon that will be shown when there is no audio file
+- Default icon types of the button: 
+    -   Speaker icon use Ionicons
+    -   Normal play icon use Feather icons
+
+#### Events
+
+| Prop              |  Default  |    Type   |  Optional  | Description                                                                |
+| :---------------- | :-------: | :-------: | :--------: | :------------------------------------------------------------------------- |
+| updatePlayingUuid |   {...}   |  `event`  |  `false`   | On press the button, to update the uuid of the playing item                |
 
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
 
 ---
 

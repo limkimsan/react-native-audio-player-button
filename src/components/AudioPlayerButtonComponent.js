@@ -102,12 +102,12 @@ const AudioPlayerButtonComponent = (props) => {
       borderRadius: 48,
       elevation: props.hasShadow ? 4 : 0,
       justifyContent: 'center',
-      height: props.height || defaultBtnSize,
-      width: props.width || defaultBtnSize,
+      height: props.buttonHeight || defaultBtnSize,
+      width: props.buttonWidth || defaultBtnSize,
       zIndex: 10
     }
 
-    return <TouchableOpacity onPress={() => onPress()} style={[btnStyles, props.btnStyle]}>
+    return <TouchableOpacity onPress={() => onPress()} style={[btnStyles, props.buttonStyle]}>
             <AudioIconComponent
               isPlaying={isPlaying}
               audio={props.audio}
@@ -140,6 +140,8 @@ export default AudioPlayerButtonComponent
   playingUuid={string}
   isSpeakerIcon={boolean}
   buttonColor={}
+  buttonHeight={number}
+  buttonWidth={number}
   rippled={boolean}
   rippleColor={}
   rippleHeight={number}
@@ -150,8 +152,10 @@ export default AudioPlayerButtonComponent
   iconSize={number}
   iconPrimaryColor={}
   iconSecondaryColor={}
-  btnStyle={{}}
+  buttonStyle={{}}
   updatePlayingUuid={(playingUuid) => {}}
   containerStyle={{}}
+  customIcon={icon component}
+  customIconSet={{play: '', pause: '', mute: ''}}
 />
 */}
