@@ -63,6 +63,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | iconPrimaryColor   |   '#000000'   |  `string`  |   `true`   | The color of the icon before playing the audio                                               |
 | iconSecondaryColor |   '#808080'   |  `string`  |   `true`   | The color of the icon while playing the audio                                                |
 | playingUuid        |      ''       |  `string`  |   `false`  | The uuid of the playing auido component (to prevent playing audio overlap each other)        |
+| hasShadow          |     false     |  `boolean` |   `true`   | The shadow of the button (Android only)                                                      |
 
 - The default width, height of the button and ripple animation will be `56dp` and `48dp` for the low pixel devices
 
