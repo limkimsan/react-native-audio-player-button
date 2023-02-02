@@ -11,15 +11,11 @@ const audioPlayerService = (() => {
     clearAllAudio,
   }
 
-  function play(filename, itemUuId, playingUuId, callback) {
+  function play(filename, itemUuId, isAppBundle = false, playingUuId, callback) {
     if (itemUuId == playingUuId) return;    // prevent the player from playing the same audio muliple time overlap each other
 
-    const audioPlayer = new Sound(filename, (error) => {
-      if (!!error)
-        return console.log('failed to play audio = ', error);
-
-      _playAudio(audioPlayer, callback);
-    })
+    const audioPlayer = isAppBundle ? new Sound(filename, Sound.MAIN_BUNDLE, (error) => _handlePlayCallback(error, audioPlayer, callback))
+                                    : new Sound(filename, (error) => _handlePlayCallback(error, audioPlayer, callback))
   }
 
   function playPause(audioPlayer, countInterval, callback) {
@@ -82,6 +78,12 @@ const audioPlayerService = (() => {
       else
         console.log('playback failed due to audio decoding errors');
     });
+  }
+
+  function _handlePlayCallback(error, audioPlayer, callback) {
+    if (!!error) return console.log('failed to play audio = ', error);
+
+    _playAudio(audioPlayer, callback);
   }
 })();
 
