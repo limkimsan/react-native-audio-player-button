@@ -46,27 +46,34 @@ const AudioPlayerButtonComponent = (props) => {
     setState({ playSeconds, duration, countInterval })
   }
 
-  const toggleAudio = () => {
-    if (!!localAudioPlayer.current) {
-      audioPlayerService.playPause(localAudioPlayer.current, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
-        global.audioPlayer = audioPlayer;
-        global.countInterval = countInterval;
-        localAudioPlayer.current = audioPlayer;
-        updateState(playSeconds, duration, countInterval);
-        handleStopPlaying(countInterval, playSeconds, duration);
-      });
+  const handleLocalAudioPlayer = () => {
+    if (!props.allowPause) {
+      audioPlayerService.clearAllAudio();
+      clearLocalAudioPlayer();
+      props.updatePlayingUuid(null);
       return;
     }
+    audioPlayerService.playPause(localAudioPlayer.current, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
+      handleAudioCallback(audioPlayer, playSeconds, duration, countInterval)
+    });
+  }
+
+  const toggleAudio = () => {
+    if (!!localAudioPlayer.current)
+      return handleLocalAudioPlayer();
 
     audioPlayerService.clearAllAudio(); // Clear all the playing audio when starting to play a new audio if there is an existing audio is playing
-
-    audioPlayerService.play(props.audio, props.itemUuid, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
-      global.audioPlayer = audioPlayer;
-      global.countInterval = countInterval;
-      localAudioPlayer.current = audioPlayer;
-      updateState(playSeconds, duration, countInterval);
-      handleStopPlaying(countInterval, playSeconds, duration);
+    audioPlayerService.play(props.audio, props.itemUuid, props.isFromAppBundle || false, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
+      handleAudioCallback(audioPlayer, playSeconds, duration, countInterval)
     });
+  }
+
+  const handleAudioCallback = (audioPlayer, playSeconds, duration, countInterval) => {
+    global.audioPlayer = audioPlayer;
+    global.countInterval = countInterval;
+    localAudioPlayer.current = audioPlayer;
+    updateState(playSeconds, duration, countInterval);
+    handleStopPlaying(countInterval, playSeconds, duration);
   }
 
   const handleStopPlaying = (countInterval, playSeconds, duration) => {
@@ -137,11 +144,13 @@ export default AudioPlayerButtonComponent
 <AudioPlayerServcie
   audio={}
   itemUuid={string}
+  isFromAppBundle={boolean}
   playingUuid={string}
   isSpeakerIcon={boolean}
   buttonColor={}
   buttonHeight={number}
   buttonWidth={number}
+  allowPause={boolean}
   rippled={boolean}
   rippleColor={}
   rippleHeight={number}
