@@ -11,11 +11,11 @@ const audioPlayerService = (() => {
     clearAllAudio,
   }
 
-  function play(filename, itemUuId, isAppBundle = false, playingUuId, callback) {
+  function play(filename, itemUuId, isFromAppBundle, playingUuId, callback) {
     if (itemUuId == playingUuId) return;    // prevent the player from playing the same audio muliple time overlap each other
 
-    const audioPlayer = isAppBundle ? new Sound(filename, Sound.MAIN_BUNDLE, (error) => _handlePlayCallback(error, audioPlayer, callback))
-                                    : new Sound(filename, (error) => _handlePlayCallback(error, audioPlayer, callback))
+    const audioPlayer = isFromAppBundle ? new Sound(filename, Sound.MAIN_BUNDLE, (error) => _handlePlayCallback(error, audioPlayer, callback))
+                                        : new Sound(filename, (error) => _handlePlayCallback(error, audioPlayer, callback))
   }
 
   function playPause(audioPlayer, countInterval, callback) {

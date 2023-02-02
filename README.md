@@ -65,6 +65,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | playingUuid        |      ''       |  `string`  |   `false`  | The uuid of the playing auido component (to prevent playing audio overlap each other)        |
 | hasShadow          |     false     |  `boolean` |   `true`   | The shadow of the button (Android only)                                                      |
 | allowPause         |     false     |  `boolean` |   `true`   | Allow to pause the audio when toggle the button                                              |
+| isFromAppBundle    |     false     |  `boolean` |   `false`  | Set to `true` to play the audio that is stored in the app bundle (ex: the downloaded audio)  |
 
 - The default width, height of the button and ripple animation will be `56dp` and `48dp` for the low pixel devices
 

@@ -63,7 +63,7 @@ const AudioPlayerButtonComponent = (props) => {
       return handleLocalAudioPlayer();
 
     audioPlayerService.clearAllAudio(); // Clear all the playing audio when starting to play a new audio if there is an existing audio is playing
-    audioPlayerService.play(props.audio, props.itemUuid, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audio, props.itemUuid, props.isFromAppBundle || false, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
       handleAudioCallback(audioPlayer, playSeconds, duration, countInterval)
     });
   }
@@ -144,6 +144,7 @@ export default AudioPlayerButtonComponent
 <AudioPlayerServcie
   audio={}
   itemUuid={string}
+  isFromAppBundle={boolean}
   playingUuid={string}
   isSpeakerIcon={boolean}
   buttonColor={}
