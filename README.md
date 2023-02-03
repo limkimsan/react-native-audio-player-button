@@ -29,7 +29,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 //...
 const [playingUuid, setPlayingUuid] = React.useState(null);
 
-<AudioPlayerServcie
+<AudioPlayerButton
   audio={require('./assets/audios/sample.mp3')}
   itemUuid='abcdefg'
   isSpeakerIcon={true}
@@ -83,6 +83,13 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | :---------------- | :-------------------------------: | :----: | :--------: | :--------------------------------------------------- |
 | customIcon        |                {...}              | `comp` |   `true`   | Custom audio icon component                          |
 | customIconSet     | {{play: '', pause: '', mute: ''}} | `hash` |   `true`   | A hash of the custom icon names                      |
+
+#### Child components
+```js
+<AudioPlayerButton {...props}>
+  child components
+</AudioPlayerButton>
+```
 
 - `play`: The icon that will be shown when the audio is not playing
 - `pause`: The icon that will be shown while the audio is playing
