@@ -89,6 +89,7 @@ const AudioPlayerButtonComponent = (props) => {
     props.updatePlayingUuid(props.itemUuid);
     setIsPlaying(!isPlaying);
     toggleAudio();
+    !!props.onPress && props.onPress();
   }
 
   const renderRippleAnimation = () => {
