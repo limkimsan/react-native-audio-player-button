@@ -29,7 +29,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 //...
 const [playingUuid, setPlayingUuid] = React.useState(null);
 
-<AudioPlayerServcie
+<AudioPlayerButton
   audio={require('./assets/audios/sample.mp3')}
   itemUuid='abcdefg'
   isSpeakerIcon={true}
@@ -84,6 +84,13 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | customIcon        |                {...}              | `comp` |   `true`   | Custom audio icon component                          |
 | customIconSet     | {{play: '', pause: '', mute: ''}} | `hash` |   `true`   | A hash of the custom icon names                      |
 
+#### Child components
+```js
+<AudioPlayerButton {...props}>
+  <child components/>
+</AudioPlayerButton>
+```
+
 - `play`: The icon that will be shown when the audio is not playing
 - `pause`: The icon that will be shown while the audio is playing
 - `mute`: The icon that will be shown when there is no audio file
@@ -93,9 +100,10 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 
 #### Events
 
-| Prop              |  Default  |    Type   |  Optional  | Description                                                                |
-| :---------------- | :-------: | :-------: | :--------: | :------------------------------------------------------------------------- |
-| updatePlayingUuid |   {...}   |  `event`  |  `false`   | On press the button, to update the uuid of the playing item                |
+| Prop              |  Default  |    Type   |  Optional  | Description                                                          |
+| :---------------- | :-------: | :-------: | :--------: | :------------------------------------------------------------------- |
+| updatePlayingUuid |   {...}   |  `event`  |  `false`   | On press the button, to update the uuid of the playing item          |
+| onPress           |   {...}   |  `event`  |  `true`    | Event when pressing the button                                       |
 
 ## Contributing
 

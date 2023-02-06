@@ -89,6 +89,7 @@ const AudioPlayerButtonComponent = (props) => {
     props.updatePlayingUuid(props.itemUuid);
     setIsPlaying(!isPlaying);
     toggleAudio();
+    !!props.onPress && props.onPress();
   }
 
   const renderRippleAnimation = () => {
@@ -115,18 +116,19 @@ const AudioPlayerButtonComponent = (props) => {
     }
 
     return <TouchableOpacity onPress={() => onPress()} disabled={!props.audio} style={[btnStyles, props.buttonStyle]}>
-            <AudioIconComponent
-              isPlaying={isPlaying}
-              audio={props.audio}
-              isSpeakerIcon={props.isSpeakerIcon}
-              iconStyle={props.iconStyle}
-              iconSize={props.iconSize}
-              iconPrimaryColor={props.iconPrimaryColor}
-              iconSecondaryColor={props.iconSecondaryColor}
-              customIcon={props.customIcon}
-              customIconSet={props.customIconSet}
-            />
-          </TouchableOpacity>
+              {props.children}
+              <AudioIconComponent
+                isPlaying={isPlaying}
+                audio={props.audio}
+                isSpeakerIcon={props.isSpeakerIcon}
+                iconStyle={props.iconStyle}
+                iconSize={props.iconSize}
+                iconPrimaryColor={props.iconPrimaryColor}
+                iconSecondaryColor={props.iconSecondaryColor}
+                customIcon={props.customIcon}
+                customIconSet={props.customIconSet}
+              />
+           </TouchableOpacity>
   }
 
   return (
