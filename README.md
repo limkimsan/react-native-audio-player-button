@@ -87,7 +87,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 #### Child components
 ```js
 <AudioPlayerButton {...props}>
-  child components
+  <child components/>
 </AudioPlayerButton>
 ```
 
@@ -100,9 +100,10 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 
 #### Events
 
-| Prop              |  Default  |    Type   |  Optional  | Description                                                                |
-| :---------------- | :-------: | :-------: | :--------: | :------------------------------------------------------------------------- |
-| updatePlayingUuid |   {...}   |  `event`  |  `false`   | On press the button, to update the uuid of the playing item                |
+| Prop              |  Default  |    Type   |  Optional  | Description                                                          |
+| :---------------- | :-------: | :-------: | :--------: | :------------------------------------------------------------------- |
+| updatePlayingUuid |   {...}   |  `event`  |  `false`   | On press the button, to update the uuid of the playing item          |
+| onPress           |   {...}   |  `event`  |  `true`    | Event when pressing the button                                       |
 
 ## Contributing
 
