@@ -1,7 +1,6 @@
-# react-native-audio-player-button
-<span><img src="https://user-images.githubusercontent.com/18114944/215944532-c1ce1e50-9744-4f75-899e-a801d4a2b080.png" width="250" height="500" /></span>
+React Native Audio Player Button is a custom button with an icon for playing audio. The user is able to use this button as many as they want on the same screen without having the issue of overlapping playing audio.
 
-React Native Audio Player Button is a custom button with an icon for playing audio. It is able to prevent playing the audio from overlapping each other.
+<span><img src="https://user-images.githubusercontent.com/18114944/215944532-c1ce1e50-9744-4f75-899e-a801d4a2b080.png" width="250" height="500" /></span>
 
 ## Support
 iOS & Android
@@ -30,7 +29,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 const [playingUuid, setPlayingUuid] = React.useState(null);
 
 <AudioPlayerButton
-  audio={require('./assets/audios/sample.mp3')}
+  audio={require('sample.mp3')}
   itemUuid='abcdefg'
   isSpeakerIcon={true}
   rippled={true}
@@ -62,7 +61,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | iconSize           |    24 or 26   |  `number`  |   `true`   | The size of the icons (play and pause icon)                                                  |
 | iconPrimaryColor   |   '#000000'   |  `string`  |   `true`   | The color of the icon before playing the audio                                               |
 | iconSecondaryColor |   '#808080'   |  `string`  |   `true`   | The color of the icon while playing the audio                                                |
-| playingUuid        |      ''       |  `string`  |   `false`  | The uuid of the playing auido component (to prevent playing audio overlap each other)        |
+| playingUuid        |      ''       |  `string`  |   `false`  | The uuid of the playing audio component (to prevent playing audio overlap each other)        |
 | hasShadow          |     false     |  `boolean` |   `true`   | The shadow of the button (Android only)                                                      |
 | allowPause         |     false     |  `boolean` |   `true`   | Allow to pause the audio when toggle the button                                              |
 | isFromAppBundle    |     false     |  `boolean` |   `false`  | Set to `true` to play the audio that is stored in the app bundle (ex: the downloaded audio)  |
