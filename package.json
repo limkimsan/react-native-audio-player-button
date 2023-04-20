@@ -1,6 +1,6 @@
 {
   "name": "react-native-audio-player-button",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A custom button with an icon for playing audio. It is able to play the audio without overlapping each other.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
