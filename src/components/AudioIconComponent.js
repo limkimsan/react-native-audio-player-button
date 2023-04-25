@@ -28,7 +28,7 @@ const AudioIconComponent = (props) => {
         React.cloneElement(audioIconHelper.getIcon(props.customIcon, props.isSpeakerIcon), {
           name: audioIconHelper.getIconName(props.customIconSet, props.isSpeakerIcon, props.audio, props.isPlaying),
           size: iconSize, color: !!props.audio ? getIconColor() : color.muted,
-          style: [{ width: iconSize }, audioIconHelper.getIconMargin(props.isPlaying, props.isSpeakerIcon, !!props.customIcon), props.iconStyle]
+          style: [{ width: iconSize }, audioIconHelper.getIconStyle(props.isPlaying, props.isSpeakerIcon, props.customNotPlayingIconStyle, props.customPlayingIconStyle), props.iconStyle]
         })
       }
     </View>

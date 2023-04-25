@@ -70,12 +70,15 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 
 #### Custom styles
 
-| Prop                  |    Default    |   Type    |  Optional  | Description                                                                |
-| :-------------------- | :-----------: | :-------: | :--------: | :------------------------------------------------------------------------- |
-| containerStyle        |     {...}     |  `style`  |   `true`   | Style of the button and ripple animation container                         |
-| butonStyle            |     {...}     |  `style`  |   `true`   | Style of the button                                                        |
-| iconStyle             |     {...}     |  `style`  |   `true`   | Style of the audio icons (play and pause icon)                             |
-| rippleStyle           |     {...}     |  `style`  |   `true`   | Style of the ripple animation                                              |
+| Prop                        |    Default    |   Type    |  Optional  | Description                                                                |
+| :-------------------------- | :-----------: | :-------: | :--------: | :------------------------------------------------------------------------- |
+| containerStyle              |     {...}     |  `style`  |   `true`   | Style of the button and ripple animation container                         |
+| buttonStyle                 |     {...}     |  `style`  |   `true`   | Style of the button                                                        |
+| iconStyle                   |     {...}     |  `style`  |   `true`   | Style of the audio icons (play and pause icon)                             |
+| rippleStyle                 |     {...}     |  `style`  |   `true`   | Style of the ripple animation                                              |
+| customNotPlayingIconStyle   |     {...}     |  `style`  |   `true`   | Style of the audio icon when is not playing                                |
+| customPlayingIconStyle      |     {...}     |  `style`  |   `true`   | Style of the audio icon while playing                                      |
+
 
 #### Custom components
 | Prop              |               Default             |  Type  |  Optional  | Description                                          |
