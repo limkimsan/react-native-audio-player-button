@@ -7,7 +7,7 @@ const audioIconHelper = (() => {
   return {
     getIcon,
     getIconName,
-    getIconMargin,
+    getIconStyle,
   }
 
   function getIcon(customIcon, isSpeakerIcon) {
@@ -22,9 +22,9 @@ const audioIconHelper = (() => {
     return isPlaying ? icon.pause : icon.play;
   }
 
-  function getIconMargin(isPlaying, isSpeakerIcon) {
-    if (isPlaying && !isSpeakerIcon) return { marginLeft: -1 }
-    return { marginLeft: 0 }
+  function getIconStyle(isPlaying, isSpeakerIcon, customNotPlayingStyle, customPlayingStyle) {
+    if (isPlaying && !isSpeakerIcon) return customPlayingStyle || { marginLeft: -1.5 }
+    return customNotPlayingStyle || { marginLeft: 0 }
   }
 })()
 
