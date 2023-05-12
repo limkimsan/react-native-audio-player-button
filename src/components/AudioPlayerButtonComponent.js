@@ -100,6 +100,7 @@ const AudioPlayerButtonComponent = (props) => {
               radius={props.rippleRadius}
               isPlaying={isPlaying}
               rippleStyle={props.rippleStyle}
+              rippleScaleSize={props.rippleScaleSize}
            />
   }
 

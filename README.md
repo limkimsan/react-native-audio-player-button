@@ -57,7 +57,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | rippleColor        |   '#000000'   |  `string`  |   `true`   | Color of the ripple animation                                                                |
 | rippleHeight       |    48 or 56   |  `number`  |   `true`   | The height of the ripple animation                                                           |
 | rippleWidth        |    48 or 56   |  `number`  |   `true`   | The width of the ripple animation                                                            |
-| rippleRadius       |    48 or 56   |  `number`  |   `true`   | The radius of the ripple animation                                                           |
+| rippleRadius       |    48 or 56   |  `number`  |   `true`   | The radius of the ripple animation (higher radius makes the ripple appear in a round shape)  |
 | iconSize           |    24 or 26   |  `number`  |   `true`   | The size of the icons (play and pause icon)                                                  |
 | iconPrimaryColor   |   '#000000'   |  `string`  |   `true`   | The color of the icon before playing the audio                                               |
 | iconSecondaryColor |   '#808080'   |  `string`  |   `true`   | The color of the icon while playing the audio                                                |
@@ -65,6 +65,7 @@ const [playingUuid, setPlayingUuid] = React.useState(null);
 | hasShadow          |     false     |  `boolean` |   `true`   | The shadow of the button (Android only)                                                      |
 | allowPause         |     false     |  `boolean` |   `true`   | Allow to pause the audio when toggle the button                                              |
 | isFromAppBundle    |     false     |  `boolean` |   `false`  | Set to `true` to play the audio that is stored in the app bundle (ex: the downloaded audio)  |
+| rippleScaleSize    |    'medium'   |  `string`  |   `true`   | The scale size of the ripple animation while the audio is playing                            |
 
 - The default width, height of the button and ripple animation will be `56dp` and `48dp` for the low pixel devices
 
