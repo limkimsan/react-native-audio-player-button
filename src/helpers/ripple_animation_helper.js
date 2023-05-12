@@ -12,7 +12,7 @@ const rippleAnimationHelper = (() => {
         Animated.parallel([
           _animatedTiming(animation.scale, 1.8, index * 400),
           _animatedTiming(animation.opacity, 0, index * 400),
-        ], { useNativeDriver: true })
+        ], { useNativeDriver: false })
       ).start();
     });
   }
@@ -29,7 +29,7 @@ const rippleAnimationHelper = (() => {
             toValue: toValue,
             duration: 2000,
             delay: delay,
-            useNativeDriver: true
+            useNativeDriver: false
           })
   }
 
