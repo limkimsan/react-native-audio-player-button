@@ -27,7 +27,7 @@ const RippleAnimationComponent = (props) => {
       return;
     }
 
-    props.isPlaying ? rippleAnimationHelper.start(animations) : rippleAnimationHelper.reset(animations);
+    props.isPlaying ? rippleAnimationHelper.start(animations, props.rippleScaleSize) : rippleAnimationHelper.reset(animations);
   }, [props.isPlaying])
 
   const rippleView = (index) => {
