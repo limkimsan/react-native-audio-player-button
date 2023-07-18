@@ -7,7 +7,9 @@ import {defaultBtnSize} from '../constants/component_constant'
 import color from '../constants/color_constant';
 import audioPlayerService from '../services/audio_player_service';
 
-const AudioPlayerButtonComponent = (props) => {
+const {useImperativeHandle} = React
+
+const AudioPlayerButtonComponent = React.forwardRef((props) => {
   const localAudioPlayer = useRef(null);
   const [state, setState] = useState({
     playSeconds: 0,
@@ -31,6 +33,10 @@ const AudioPlayerButtonComponent = (props) => {
   useEffect(() => {
     return () => { audioPlayerService.clearAllAudio(); }  // Clear all the audio when component is unmount
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    onPress
+  }))
 
   const clearLocalAudioPlayer = () => {
     localAudioPlayer.current = null;
@@ -140,7 +146,7 @@ const AudioPlayerButtonComponent = (props) => {
       { renderBtn() }
     </View>
   )
-}
+})
 
 export default AudioPlayerButtonComponent
 
