@@ -9,7 +9,7 @@ import audioPlayerService from '../services/audio_player_service';
 
 const {useImperativeHandle} = React
 
-const AudioPlayerButtonComponent = React.forwardRef((props) => {
+const AudioPlayerButtonComponent = React.forwardRef((props, ref) => {
   const localAudioPlayer = useRef(null);
   const [state, setState] = useState({
     playSeconds: 0,
