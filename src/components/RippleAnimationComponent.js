@@ -10,9 +10,9 @@ const RippleAnimationComponent = (props) => {
     opacity1: new Animated.Value(1),
     opacity2: new Animated.Value(1),
     opacity3: new Animated.Value(1),
-    scale1: new Animated.Value(0),
-    scale2: new Animated.Value(0),
-    scale3: new Animated.Value(0),
+    scale1: new Animated.Value(0.01),
+    scale2: new Animated.Value(0.01),
+    scale3: new Animated.Value(0.01),
   });
 
   const animations = [
