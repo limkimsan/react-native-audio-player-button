@@ -35,8 +35,11 @@ const AudioPlayerButtonComponent = React.forwardRef((props, ref) => {
   }, []);
 
   useImperativeHandle(ref, () => ({
-    onPress
+    onPress,
+    getPlayingStatus,
   }))
+
+  const getPlayingStatus = () => { return isPlaying; }
 
   const clearLocalAudioPlayer = () => {
     localAudioPlayer.current = null;
@@ -95,7 +98,9 @@ const AudioPlayerButtonComponent = React.forwardRef((props, ref) => {
     props.updatePlayingUuid(props.itemUuid);
     setIsPlaying(!isPlaying);
     toggleAudio();
-    !!props.onPress && props.onPress();
+    setTimeout(() => {
+      !!props.onPress && props.onPress();
+    }, 15);
   }
 
   const renderRippleAnimation = () => {
